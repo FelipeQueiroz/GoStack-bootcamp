@@ -1,7 +1,8 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateAppoitments1598494756127 implements MigrationInterface {
-//Só alterar o migration se não estiver em nenhum sistema de versionamento
+export default class CreateAppoitments1598494756127
+    implements MigrationInterface {
+    // Só alterar o migration se não estiver em nenhum sistema de versionamento
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -12,7 +13,7 @@ export default class CreateAppoitments1598494756127 implements MigrationInterfac
                         type: 'uuid',
                         isPrimary: true,
                         generationStrategy: 'uuid',
-                        default: 'uuid_generate_v4()'
+                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'provider',
@@ -31,14 +32,13 @@ export default class CreateAppoitments1598494756127 implements MigrationInterfac
                         name: 'updated_at',
                         type: 'timestamp',
                         default: 'now()',
-                    }
-                ]
-            })
-        )
+                    },
+                ],
+            }),
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('appointments')
+        await queryRunner.dropTable('appointments');
     }
-
 }
